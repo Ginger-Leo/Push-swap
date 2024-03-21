@@ -6,63 +6,68 @@
 /*   By: lstorey <lstorey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 10:25:03 by lstorey           #+#    #+#             */
-/*   Updated: 2024/02/07 13:51:03 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/03/21 09:04:04 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
-//checking if arguments send are one 'string'
-char	main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	int		i;
-	char	**new_argv_array;
+	int			i;
+	char		**array;
+	t_ps_list	*stack_a;
+	t_ps_list	*stack_b;
+	int			split_flag;
 
-	i = 1;
-	while (i <= argc)
+	i = -1;
+	stack_a = NULL;
+	stack_b = NULL;
+	array = &argv[1];
+	if (argc == 2)
 	{
-		if (argc == 2)
-			**new_arg_array = ft_split(argv[1], ' ');
-		valid_input(**new_arg_array)
-		else
-		valid_input(argv[1++])
-		add_to_stack(argv[1++]);
-		i++;
+		array = ft_split(argv[1], ' ');
+		split_flag = 1;
 	}
+	error_check(array, split_flag);
+	while (array[++i])
+		add_to_stack(&stack_a, new_node(ft_atol(array[i])));
+	if (sorted(&stack_a) == 0)
+		return (1);
+	if (argc == 2)
+		free_split(array);
+	print_stack(&stack_a);
+	free_stack(stack_a);
 }
 
-//checking valid input, no doubles, no chars, etc.
-//send to 'add_to_stack' from here.
-void	valid_input(int **str)
+//adding value to new node
+t_ps_list	*new_node(int value)
 {
+	t_ps_list	*new_node;
 
+	new_node = malloc(sizeof(t_ps_list));
+	if (new_node == NULL)
+		return (NULL);
+	new_node->number = value;
+	new_node->next = NULL;
+	return (new_node);
 }
 
-//initialing stack.
-//adding verifyied int to stack. 
-t_list	add_to_stack(char **n)
+//adding un-verifyied node to stack. 
+void	add_to_stack(t_ps_list **stack_a, t_ps_list *new_node)
 {
-	t_list	*stack_a;
-	t_list	*stack_b;
+	t_ps_list	*tmp;
 
-	stack_a = malloc(sizeof t_list);
-	stack_b = malloc(sizeof t_list);
-	if (stack_a == NULL || stack_b == NULL)
-		free (stack_a, stack_b)
-		**n = stack_a->number;
-	stack_a->next = NULL;
-}
-
-//if argument is "one string" it will 
-//split it up and send to stack as an array.
-static char ft_split(**argv, char delim)
-{
-	char	**new_arg_array;
-	int		i;
-
-	i = 0;
-	while (agrv[i++])
-		if (argv[i] == delim)
-
-	return (new_arg_array);
+	if (*stack_a == NULL)
+		*stack_a = new_node;
+	else
+	{
+		tmp = *stack_a;
+		while (tmp->next != NULL)
+		{
+			tmp = tmp->next;
+		}
+		tmp->next = new_node;
+	}
 }
