@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   reverse_rotating_xtra.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lstorey <lstorey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/14 09:55:33 by lstorey           #+#    #+#             */
-/*   Updated: 2024/03/22 15:31:27 by lstorey          ###   ########.fr       */
+/*   Created: 2024/03/26 16:29:34 by lstorey           #+#    #+#             */
+/*   Updated: 2024/03/29 17:28:41 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_split(char **arr)
+t_ps_list	*find_last_node(t_ps_list *stack)
 {
-	int	i;
-
-	i = 0;
-	while (arr[i])
-		free(arr[i++]);
-	free(arr);
+	while (stack->next)
+	{
+		stack = stack->next;
+	}
+	return (stack);
 }
 
-void	free_stack(t_ps_list *stack)
+t_ps_list	*find_penultimate_node(t_ps_list *stack)
 {
-	t_ps_list	*tmp;
-
-	while (stack)
+	while (stack->next->next)
 	{
-		tmp = stack->next;
-		free(stack);
-		stack = tmp;
+		stack = stack->next;
 	}
+	return (stack);
 }

@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   sort_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lstorey <lstorey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/14 09:55:33 by lstorey           #+#    #+#             */
-/*   Updated: 2024/03/22 15:31:27 by lstorey          ###   ########.fr       */
+/*   Created: 2024/03/21 09:18:31 by lstorey           #+#    #+#             */
+/*   Updated: 2024/03/30 15:41:27 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_split(char **arr)
+void	sort_stack(t_ps_list **stack_a)
 {
-	int	i;
+	int			c;
+	t_ps_list	*stack_b;
 
-	i = 0;
-	while (arr[i])
-		free(arr[i++]);
-	free(arr);
-}
-
-void	free_stack(t_ps_list *stack)
-{
-	t_ps_list	*tmp;
-
-	while (stack)
-	{
-		tmp = stack->next;
-		free(stack);
-		stack = tmp;
-	}
+	stack_b = NULL;
+	c = list_length(stack_a);
+	adding_index(stack_a);
+	if (c == 2)
+		sa(stack_a);
+	else if (c == 3)
+		sort_3(stack_a);
+	else if (c == 4)
+		sort_4(stack_a, &stack_b);
+	else if (c == 5)
+		sort_5(stack_a, &stack_b);
+	else
+		radix_sort(stack_a, &stack_b);
+	free_stack(*stack_a);
+	free_stack(stack_b);
 }

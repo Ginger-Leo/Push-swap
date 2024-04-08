@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:13:17 by lstorey           #+#    #+#             */
-/*   Updated: 2024/03/13 12:43:06 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/03/26 16:14:34 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ long	ft_atol(const char *str)
 	long	neg;
 	long	i;
 	long	pre;
-	
+
 	rtn = 0;
 	neg = 1;
 	i = 0;

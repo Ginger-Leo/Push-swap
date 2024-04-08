@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 11:28:31 by lstorey           #+#    #+#             */
-/*   Updated: 2024/03/20 09:15:55 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/03/29 17:28:54 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,7 @@
 
 #include "push_swap.h"
 
-static t_ps_list	*find_last_node(t_ps_list *stack)
-{
-	while (stack->next)
-	{
-		stack = stack->next;
-	}
-	return (stack);
-}
-
-static t_ps_list	*find_penultimate_node(t_ps_list *stack)
-{
-	while (stack->next->next)
-	{
-		stack = stack->next;
-	}
-	return (stack);
-}
-
-static void	reverse_rotate(t_ps_list **stack)
+void	reverse_rotate(t_ps_list **stack)
 {
 	t_ps_list	*top_node;
 	t_ps_list	*bottom_node;

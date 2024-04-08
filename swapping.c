@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 13:21:53 by lstorey           #+#    #+#             */
-/*   Updated: 2024/03/20 09:16:20 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/03/26 16:26:42 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 			/*	ss - swapping top 2 nodes of A + B 		 */
 			/* ***************************************** */
 #include "push_swap.h"
-
 
 static void	swap(t_ps_list **stack)
 {

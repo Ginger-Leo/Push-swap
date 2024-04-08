@@ -1,29 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sorted.c                                           :+:      :+:    :+:   */
+/*   sort_5_xtra.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lstorey <lstorey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/20 12:22:45 by lstorey           #+#    #+#             */
-/*   Updated: 2024/04/03 14:22:01 by lstorey          ###   ########.fr       */
+/*   Created: 2024/03/26 10:05:00 by lstorey           #+#    #+#             */
+/*   Updated: 2024/03/26 16:26:59 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	sorted(t_ps_list **stack)
+t_ps_list	*find_second_lowest(t_ps_list **stack_a)
 {
 	t_ps_list	*tmp;
+	t_ps_list	*second_lowest;
 
-	if (!stack || !(*stack))
-		return (1);
-	tmp = (*stack);
+	tmp = (*stack_a);
+	second_lowest = (*stack_a);
 	while (tmp->next)
 	{
-		if (tmp->number > tmp->next->number)
-			return (1);
+		if (tmp->next->index < tmp->index && tmp->index != 0)
+			second_lowest = tmp->next;
 		tmp = tmp->next;
 	}
-	return (0);
+	return (second_lowest);
+}
+
+int	second_distance_to_top(t_ps_list **stack_a)
+{
+	int			distance;
+	t_ps_list	*tmp;
+
+	distance = 0;
+	tmp = (*stack_a);
+	while (tmp)
+	{
+		if (tmp->index != 1)
+			distance++;
+		else
+			return (distance);
+		tmp = tmp->next;
+	}
+	return (distance);
 }

@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 09:03:27 by lstorey           #+#    #+#             */
-/*   Updated: 2024/03/21 09:02:45 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/03/23 22:04:42 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,14 @@ static void	push(t_ps_list **src_list, t_ps_list **dest_list)
 	t_ps_list	*top_dest;
 	t_ps_list	*sec_src;
 
+	if (!src_list)
+		return ;
 	top_src = (*src_list);
 	top_dest = (*dest_list);
-	sec_src = top_src->next;
+	if (top_src->next == NULL)
+		sec_src = NULL;
+	else
+		sec_src = top_src->next;
 	if (!*dest_list)
 		top_src->next = NULL;
 	else
