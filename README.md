@@ -1,2 +1,4 @@
 # Push-swap
-Here is my push swap project! im going to try to upload more consistently and with better notes so its easier to follow my working and see my growth happen .....hopefully
+Here is my finished push_swap with using radix sorting algorithm.
+
+Really enoyed this project, I definately felt like I learned alot.
